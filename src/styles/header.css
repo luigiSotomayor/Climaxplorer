@@ -1,0 +1,29 @@
+.header {
+  background-image: url(src/assets/images/header-background.jpg);
+  background-position: bottom center;
+  height: 200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header > h1 {
+  color: whitesmoke;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 5rem;
+  display: center;
+  cursor: pointer;
+  text-shadow:
+    0 0 5px rgb(21, 199, 199),
+    0 0 7px rgb(21, 199, 199),
+    0 0 9px rgb(21, 199, 199),
+    0 0 11px rgb(21, 199, 199);
+}
+
+@media (max-width: 500px){
+  .header > h1 {
+    font-size: 12vw;
+  }
+}

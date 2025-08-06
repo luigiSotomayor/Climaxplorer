@@ -1,0 +1,13 @@
+.footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgba(45, 44, 44, 0.86);
+    height: 35px;
+}
+
+.footer >h4, .footer > h5 {
+    color: whitesmoke;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

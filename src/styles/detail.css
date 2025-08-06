@@ -1,0 +1,25 @@
+.MainDetail{
+    background-color: rgba(127,255,212,0.3);
+    padding: 10px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+
+.MainDetail > p {
+    margin: 0px;
+    font-weight: bolder;
+}
+
+.graphTitle{
+    margin: 20px auto;
+}
+
+.graph {
+    width: 100%;
+    max-width: 750px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

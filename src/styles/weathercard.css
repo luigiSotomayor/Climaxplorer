@@ -1,0 +1,37 @@
+.alwaysVisible {
+  width: 100%;
+  display: grid;
+  background-color: rgba(127,255,212,0.3);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  padding: 1rem;
+  margin: auto;
+  margin-top: 15px;
+  max-width: 750px;
+}
+
+.visibleParams {
+  width: 100%;
+  display: grid;
+  background-color: white;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  border: 2px solid rgba(127,255,212,0.7);
+  box-shadow: 0px 0px 10px 5px rgba(127,255,212,0.7);
+  padding: 1rem;
+  border-radius: 8px;
+  margin: auto;
+  margin-top: 15px;
+  max-width: 750px;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info > img {
+    width: 30px;
+    height: 30px;
+}
