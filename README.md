@@ -57,6 +57,39 @@ src/
 │ ├── WeatherForm.jsx  
 └ └── WeatherCard.jsx  
 
+## ✒️ Estructura del proyecto:
+```mermaid
+flowchart TD
+    A[main.jsx] --> B[App.jsx]
+    B[App.jsx] --> C[Header.jsx]
+    B[App.jsx] --> D[HourDate.jsx]
+    B[App.jsx] --> E[Home.jsx]
+    B[App.jsx] --> F[Footer.jsx]
+    E[Home.jsx] --> G[Search.jsx]
+    G[Search.jsx] --> H[WeatherForm.jsx]
+    G[Search.jsx] --> I[Detail.jsx]
+    H[WeatherForm.jsx] --> G[Search.jsx]
+    I[Detail.jsx] --> J[WeatherCard.jsx]
+    I[Detail.jsx] --> K[Graph.jsx]
+    D[HourDate.jsx] --> L[useCurrentTime.jsx]
+
+    %% Colores personalizados nodo a nodo
+    style A fill:#4CAF50,stroke:#333,stroke-width:2px,color:white
+    style B fill:#2196F3,stroke:#333,stroke-width:2px,color:white
+    style C fill:#FFC107,stroke:#333,stroke-width:2px,color:black
+    style D fill:#FFC107,stroke:#333,stroke-width:2px,color:black
+    style E fill:#8BC34A,stroke:#333,stroke-width:2px,color:white
+    style F fill:#FFC107,stroke:#333,stroke-width:2px,color:black
+    style G fill:#8BC34A,stroke:#333,stroke-width:2px,color:white
+    style H fill:#FFC107,stroke:#333,stroke-width:2px,color:black
+    style I fill:#8BC34A,stroke:#333,stroke-width:2px,color:white
+    style J fill:#FFC107,stroke:#333,stroke-width:2px,color:black
+    style K fill:#FFC107,stroke:#333,stroke-width:2px,color:black
+    style L fill:#F44336,stroke:#333,stroke-width:2px,color:white
+
+```
+
+
 ## ✒️ Instalación:
 ```bash
 git clone https://github.com/luigiSotomayor/Climaxplorer.git
