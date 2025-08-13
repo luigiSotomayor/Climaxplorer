@@ -1,19 +1,12 @@
 import React from "react";
-import { useState, useEffect } from "react";
+//import { useState, useEffect } from "react";
+import { useCurrentTime } from "../hooks/useCurrentTime";
 import "../styles/hourdate.css";
 
 const HourDate = () => {
-  const [fechaHora, setFechaHora] = useState(new Date());
+  const time = useCurrentTime();
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setFechaHora(new Date());
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const fechaFormateada = fechaHora.toLocaleTimeString(undefined, {
+  const formattedDate = time.toLocaleTimeString(undefined, {
     weekday: "long",
     year: "numeric",
     month: "long",
@@ -22,7 +15,7 @@ const HourDate = () => {
 
   return (
     <nav className="hourDateDisplay">
-      <p>{fechaFormateada}</p>
+      <p>{formattedDate}</p>
     </nav>
   );
 };

@@ -1,3 +1,7 @@
+.weatherCard {
+  width: 100%;
+}
+
 .alwaysVisible {
   width: 100%;
   display: grid;
@@ -9,7 +13,7 @@
   margin-top: 15px;
   max-width: 750px;
 }
-
+ 
 .visibleParams {
   width: 100%;
   display: grid;

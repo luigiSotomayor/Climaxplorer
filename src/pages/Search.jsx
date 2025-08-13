@@ -1,8 +1,10 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import WeatherForm from "../components/WeatherForm";
+import Detail from "./Detail";
 import { useNavigate } from "react-router-dom";
 import "../styles/search.css";
+
+export const dataContext = createContext();
 
 const Search = () => {
   const [query, setQuery] = useState(null);
@@ -19,6 +21,7 @@ const Search = () => {
         const json = await res.json();
         setData(json);
         setError(null);
+
       } catch (err) {
         setError("Error al obtener los datos climáticos.");
         console.log(error);
@@ -27,22 +30,26 @@ const Search = () => {
     fetchWeather();
   }, [query]);
 
-  useEffect(() => {
-    if (data !== null) {
-      navigate("/detalle", {state: { data, query }});
-    }
-  }, [data]);
-
   return (
     <main className="mainSearch">
-      <p className="explainSearch">
-        Rellene el siguiente formulario sobre la ciudad y fecha sobre la que
-        quiere recibir información climática. Además, debe de elegir las
-        variables climáticas de las cuales quiere conocer la información. Todos
-        los campos son requeridos.
-      </p>
       <section className="sectionWeatherForm">
-        <WeatherForm onSearch={setQuery} />
+        {!data ? (
+          <>
+            <p className="explainSearch">
+              Rellene el siguiente formulario sobre la ciudad y fecha sobre la
+              que quiere recibir información climática. Además, debe elegir las
+              variables climáticas de las cuales quiere conocer la información.
+              Todos los campos son requeridos.
+            </p>
+            <section className="sectionWeatherForm">
+              <WeatherForm onSearch={setQuery} />
+            </section>
+          </>
+        ) : (
+          <dataContext.Provider value={{ data, query }}>
+            <Detail />
+          </dataContext.Provider>
+        )}
       </section>
     </main>
   );

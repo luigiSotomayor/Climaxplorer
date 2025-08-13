@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { mean } from "mathjs";
 import "../styles/weathercard.css";
+import { dataContext } from "../pages/Search";
 
 import CityIcon from '../assets/icons/edificio.png';
 import DateIcon from '../assets/icons/fecha.png';
@@ -20,7 +21,13 @@ import HumidityIcon from '../assets/icons/humidity.png';
 import PressureIcon from '../assets/icons/barometro.png';
 
 
-const WeatherCard = ({ data, query }) => {
+const WeatherCard = () => {
+  const { data, query } = useContext(dataContext) || {};
+
+  if (!data?.daily || !data?.hourly || !query) {
+    return <p>Cargando datos...</p>;
+  }
+
   const sunrise = new Date(data.daily.sunrise).toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",

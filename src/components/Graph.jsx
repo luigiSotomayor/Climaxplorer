@@ -1,5 +1,7 @@
 import { Line } from "react-chartjs-2";
-import { useState } from "react";
+import { useState, useContext } from "react";
+
+import { dataContext } from "../pages/Search";
 
 import {
   Chart as ChartJS,
@@ -22,10 +24,11 @@ ChartJS.register(
   Filler
 );
 
-const Graph = ({ hourly, meteoParam }) => {
+const Graph = ({ meteoParam }) => {
+  const { data, query } = useContext(dataContext) || {};
   const [metParam, setMetParam] = useState(meteoParam);
 
-  const labels = hourly.time.slice(0, 24).map((t) => {
+  const labels = data?.hourly?.time.slice(0, 24).map((t) => {
     const hora = new Date(t).toLocaleTimeString([], {
       hour: "2-digit",
       minute: "2-digit",
@@ -39,7 +42,7 @@ const Graph = ({ hourly, meteoParam }) => {
   if (metParam.includes("humidity")) {
     datasets.push({
       label: "Humedad relativa (%)",
-      data: hourly.relative_humidity_2m.slice(0, 24),
+      data: data.hourly.relative_humidity_2m.slice(0, 24),
       borderColor: "rgba(54, 162, 235, 1)",
       backgroundColor: "rgba(54, 162, 235, 0.3)",
       tension: 0.3,
@@ -52,7 +55,7 @@ const Graph = ({ hourly, meteoParam }) => {
   if (metParam.includes("pressure")) {
     datasets.push({
       label: "Presión atmosférica (hPa)",
-      data: hourly.surface_pressure.slice(0, 24),
+      data: data.hourly.surface_pressure.slice(0, 24),
       borderColor: "rgba(245, 7, 7, 1)",
       backgroundColor: "rgba(245, 7, 7, 0.3)",
       tension: 0.3,
