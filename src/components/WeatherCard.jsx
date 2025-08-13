@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { mean } from "mathjs";
 import "../styles/weathercard.css";
 import { dataContext } from "../pages/Search";
@@ -20,26 +20,25 @@ import WindSpeedIcon from '../assets/icons/wind_speed.png';
 import HumidityIcon from '../assets/icons/humidity.png';
 import PressureIcon from '../assets/icons/barometro.png';
 
-
+//se crea la UI donde están todos los datos solicitados por el usuario
 const WeatherCard = () => {
-  const { data, query } = useContext(dataContext) || {};
+  const { data, query } = useContext(dataContext) || {}; //tomamos los datos del context
 
-  if (!data?.daily || !data?.hourly || !query) {
-    return <p>Cargando datos...</p>;
-  }
-
+  //formateamos la hora de amanecer
   const sunrise = new Date(data.daily.sunrise).toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
   });
 
+  //formateamos la hora de atardecer
   const sunset = new Date(data.daily.sunset).toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
   });
 
+  //formateamos la fecha
   const date = new Date(query.date).toLocaleDateString('es-ES', {
     day: '2-digit',
     month: '2-digit',
@@ -56,6 +55,8 @@ const WeatherCard = () => {
         <p className="info"><img src={SunsetIcon} alt="Puesta del sol" title="Puesta del sol"/><span>{sunset} h</span></p>
         <p className="info"><img src={LongitudeIcon} alt="Longitud" title="Longitud"/><span>{data.longitude}º</span></p>
       </section>
+      {/* En la siguiente sección vamos comprobando cada uno de los parámetros. Si el usuario lo ha elegido lo ponemos en la interfaz,
+      si no lo ha elegido no se incluye. */}
       <section className="visibleParams">
         {query.temperature ? (
           <>

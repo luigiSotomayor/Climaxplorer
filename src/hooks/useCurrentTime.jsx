@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+//Crea la variable time cogiendo el date del sistema y lo actualiza cada segundo
 export const useCurrentTime = () => {
   const [time, setTime] = useState(new Date());
 

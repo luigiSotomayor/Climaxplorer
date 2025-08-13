@@ -1,8 +1,10 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
+//creamos el formulario para obtener los datos del usuario
 const WeatherForm = ({ onSearch }) => {
+
+  //le damos al objeto la estructura y default values que queremos
   const { register, handleSubmit, formState } = useForm({
     defaultValues: {
       city: "",
@@ -20,11 +22,13 @@ const WeatherForm = ({ onSearch }) => {
 
   const onSubmit = async (formData) => {
     try {
+      //consultamos a la API geocoding para que nos dé las coordenadas de la ciudad
       const res = await fetch(
         `https://geocoding-api.open-meteo.com/v1/search?name=${formData.city}`
       );
       const geo = await res.json();
 
+      //si algo falla nos sale un toast avisándonos del fallo
       if (!geo.results || geo.results.length === 0) {
         toast.error("Ciudad no encontrada", {
           position: "top-center",

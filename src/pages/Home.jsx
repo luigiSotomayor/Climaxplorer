@@ -1,7 +1,7 @@
-import React from "react";
 import "../styles/home.css";
 import { useNavigate } from "react-router-dom";
 
+//crea la página de inicio
 const Home = () => {
   const navigate = useNavigate();
 
