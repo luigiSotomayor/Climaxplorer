@@ -52,7 +52,7 @@ const Home = () => {
       </section>
       <section className="mainHomeImage">
         <img
-          src="src/assets/images/img_mapa_isobárico.jpg"
+          src="/images/img_mapa_isobárico.jpg"
           alt="Mapa isobárico"
         />
       </section>
